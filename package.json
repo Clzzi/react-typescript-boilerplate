@@ -1,0 +1,32 @@
+{
+  "name": "react-typescript-boilerplate",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Clzzi/react-typescript-boilerplate.git"
+  },
+  "keywords": [],
+  "author": "Clzzi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Clzzi/react-typescript-boilerplate/issues"
+  },
+  "homepage": "https://github.com/Clzzi/react-typescript-boilerplate#readme",
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.30",
+    "@types/react-dom": "^17.0.9",
+    "@types/webpack": "^5.28.0",
+    "ts-loader": "^9.2.6",
+    "typescript": "^4.4.4",
+    "webpack": "^5.58.2",
+    "webpack-cli": "^4.9.1"
+  }
+}
