@@ -7,10 +7,16 @@ module.exports = merge(common, {
   devServer: {
     static: {
       directory: "../dist",
-      host: "localhost",
-      port: 8080,
-      open: true,
-      historyApiFallback: true,
     },
+    host: "localhost",
+    port: 8080,
+    open: true,
+    client: {
+      overlay: true,
+      progress: true,
+    },
+    compress: true,
+    open: true,
+    historyApiFallback: true,
   },
 });

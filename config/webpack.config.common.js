@@ -3,10 +3,10 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const path = require("path");
 
 module.exports = {
-  entry: "./src/index.tsx",
+  entry: "../src/index.tsx",
   output: {
     path: path.join(__dirname, "../dist"),
-    filename: "bundle.js",
+    filename: "[name].[chunkhash].js",
     publicPath: "/",
   },
   resolve: {
@@ -27,7 +27,7 @@ module.exports = {
         },
       },
       {
-        test: /\.css$/i,
+        test: /\.css$/,
         use: ["style-loader", "css-loader"],
       },
     ],
@@ -37,7 +37,8 @@ module.exports = {
       cleanStaleWebpackAssets: false,
     }),
     new HtmlWebpackPlugin({
-      template: "../src/index.html",
+      template: "../public/index.html",
+      favicon: "../public/favicon.ico",
     }),
   ],
 };
