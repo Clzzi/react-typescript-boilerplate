@@ -33,3 +33,16 @@ $ yarn dev
 ├─ package.json
 └─ tsconfig.json
 ```
+
+## How To Run?
+You can run on **Develop mode**   🔥
+```
+$ yarn dev
+$ npm run dev
+```
+
+You can run on **Production mode** ⚡ 
+```
+$ yarn build
+$ npm run build
+```
