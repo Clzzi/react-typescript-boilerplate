@@ -46,12 +46,12 @@ async function main() {
 
     console.log('** Remove unused Files...');
     execSync('npx rimraf ../.git');
-    execSync('npx rimraf ../.build');
-    execSync('npx rimraf ../.dist');
-    execSync('npx rimraf ../.bin');
-    execSync('npx rimraf ../.package-lock.json');
-    execSync('npx rimraf ../.yarn.lock');
-    execSync('npx rimraf ../.README.md');
+    execSync('npx rimraf ../build');
+    execSync('npx rimraf ../dist');
+    execSync('npx rimraf ../bin');
+    execSync('npx rimraf ../package-lock.json');
+    execSync('npx rimraf ../yarn.lock');
+    execSync('npx rimraf ../README.md');
 
     console.log('** Complete! Happy Hacking! ');
   } catch (error) {

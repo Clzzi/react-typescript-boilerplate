@@ -15,21 +15,21 @@ $ yarn dev
 ```
 👨‍💻 Clzzi Ts React Boilerplate
 ├─ config
-│  ├─ webpack.config.common.js
+│  ├─ webpack.config.dev.js
 │  ├─ webpack.config.prod.js
-│  └─ webpack.config.dev.js
+│  └─ webpack.config.common.js
 ├─ env
-│  ├─ dev.env
-│  └─ .env
+│  ├─ .env
+│  └─ dev.env
 ├─ src
-│  ├─ index.html
 │  ├─ App.tsx
 │  ├─ index.tsx
+│  ├─ index.html
 │  └─ favicon.ico
 ├─ .eslintrc
 ├─ .babelrc
 ├─ .prettierrc
 ├─ custom.d.ts
 ├─ package.json
-└─ tsconfig.jso
+└─ tsconfig.json
 ```
