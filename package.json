@@ -1,17 +1,28 @@
 {
-  "name": "react-typescript-boilerplate",
+  "name": "clzzi-react-ts-boilerplate",
   "version": "1.0.0",
-  "description": "",
+  "description": "It's React & Typescript  Boilerplate that easy to handle,",
   "scripts": {
     "dev": "webpack serve --config ./config/webpack.config.dev.js --mode development --env development",
     "build": "webpack --config ./config/webpack.config.prod.js --mode production --env production"
   },
+  "bin": {
+    "clzzi-react-ts-boilerplate": "./bin/generate-app.js"
+  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Clzzi/react-typescript-boilerplate.git"
+    "url": "https://github.com/Clzzi/react-typescript-boilerplate.git"
   },
-  "keywords": [],
-  "author": "Clzzi",
+  "keywords": [
+    "clzzi",
+    "react",
+    "typescript",
+    "boilerplate",
+    "webpack",
+    "eslint",
+    "prettier"
+  ],
+  "author": "Clzzi <clzzi1109@naver.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Clzzi/react-typescript-boilerplate/issues"
