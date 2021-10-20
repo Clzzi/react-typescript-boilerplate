@@ -40,12 +40,11 @@ async function main() {
       process.chdir(projectPath);
     }
 
-    console.log('** Install Deps...');
-    execSync('npm install');
+    // console.log('** Install Deps...');
+    // execSync('npm install');
 
     console.log('** Remove unused Files...');
-    exec("ls");
-    exec('npx rimraf bin');
+    execSync('npx rimraf bin');
 
     console.log('** Complete! Happy Hacking! ');
   } catch (error) {
