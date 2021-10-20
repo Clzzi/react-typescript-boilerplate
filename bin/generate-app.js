@@ -52,6 +52,7 @@ async function main() {
     execSync('npx rimraf package-lock.json');
     execSync('npx rimraf yarn.lock');
     execSync('npx rimraf README.md');
+    execSync('npx rimraf node_modules');
 
     console.log('** Complete! Happy Hacking! ');
   } catch (error) {
