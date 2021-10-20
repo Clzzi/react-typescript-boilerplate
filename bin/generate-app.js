@@ -42,10 +42,11 @@ async function main() {
 
     console.log('** Install Deps...');
     execSync('npm install');
-
+    
     console.log('** Remove unused Files...');
-    fs.rmdirSync("bin", { recursive: true });
-    fs.rmdirSync(".git", { recursive: true });
+    execSync('npx rimraf ./.git');
+    execSync('npx rimraf ./bin');
+    
 
     console.log('** Complete! Happy Hacking! ');
   } catch (error) {
