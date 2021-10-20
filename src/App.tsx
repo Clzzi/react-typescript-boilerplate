@@ -1,7 +1,7 @@
 import React from 'react';
 
 const App = () => {
-  return <div> 👨‍💻 REACT_TS_VELOG </div>;
+  return <div> 👨‍💻CLZZI-REACT-TS-BOILERPLATE </div>;
 };
 
 export default App;
