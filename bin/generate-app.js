@@ -1,13 +1,12 @@
 #! /usr/bin/env node
 
-const { execSync } = require('child_process');
+const { execSync, exec } = require('child_process');
 const path = require('path');
 const fs = require('fs');
 
 if (process.argv.length < 3) {
-  console.log('You have to provide a name to your app.');
-  console.log('For example :');
-  console.log('    npx create-my-boilerplate my-app');
+  console.log('** You have to write your project name');
+  console.log('** For Example: npx create-my-boilerplate my-app');
   process.exit(1);
 }
 
@@ -45,7 +44,8 @@ async function main() {
     execSync('npm install');
 
     console.log('** Remove unused Files...');
-    execSync('npx rimraf bin');
+    exec("ls");
+    exec('npx rimraf bin');
 
     console.log('** Complete! Happy Hacking! ');
   } catch (error) {
