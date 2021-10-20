@@ -36,9 +36,7 @@ async function main() {
     console.log('** Downloading Files...');
     execSync(`git clone --depth 1 ${GIT_REPO} ${projectPath}`);
 
-    if (projectName !== '.') {
-      process.chdir(projectPath);
-    }
+    process.chdir(projectPath);
 
     console.log('** Install Deps...');
     execSync('npm install');
