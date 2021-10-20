@@ -36,14 +36,15 @@ async function main() {
     console.log('** Downloading Files...');
     execSync(`git clone --depth 1 ${GIT_REPO} ${projectPath}`);
 
-    process.chdir(projectPath);
+    if (projectName !== '.') {
+      process.chdir(projectPath);
+    }
 
     console.log('** Install Deps...');
     execSync('npm install');
 
     console.log('** Remove unused Files...');
     execSync('npx rimraf ./.git');
-    fs.rmdirSync(path.join(projectPath, 'bin'), { recursive: true });
 
     console.log('** Complete! Happy Hacking! ');
   } catch (error) {
