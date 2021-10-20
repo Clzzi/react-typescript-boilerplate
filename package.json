@@ -1,6 +1,6 @@
 {
   "name": "clzzi-react-ts-boilerplate",
-  "version": "1.2.8",
+  "version": "1.3.0",
   "description": "It's React & Typescript  Boilerplate that easy to handle,",
   "scripts": {
     "dev": "webpack serve --config ./config/webpack.config.dev.js --mode development --env development",
