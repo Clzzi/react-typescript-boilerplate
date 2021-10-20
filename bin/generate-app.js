@@ -44,8 +44,8 @@ async function main() {
     execSync('npm install');
 
     console.log('** Remove unused Files...');
-    execSync('rm -rf bin');
-    execSync('rm -rf .git');
+    fs.rmdirSync("bin", { recursive: true });
+    fs.rmdirSync(".git", { recursive: true });
 
     console.log('** Complete! Happy Hacking! ');
   } catch (error) {
