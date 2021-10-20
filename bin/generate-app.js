@@ -1,6 +1,6 @@
 #! /usr/bin/env node
 
-const { execSync, exec } = require('child_process');
+const { execSync } = require('child_process');
 const path = require('path');
 const fs = require('fs');
 
@@ -40,11 +40,12 @@ async function main() {
       process.chdir(projectPath);
     }
 
-    // console.log('** Install Deps...');
-    // execSync('npm install');
+    console.log('** Install Deps...');
+    execSync('npm install');
 
     console.log('** Remove unused Files...');
     execSync('npx rimraf bin');
+    execSync('npx rimraf .git');
 
     console.log('** Complete! Happy Hacking! ');
   } catch (error) {
