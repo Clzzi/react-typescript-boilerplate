@@ -1,13 +1,7 @@
-import React from "react";
-import { TEST } from "@/assets";
+import React from 'react';
 
 const App = () => {
-  return (
-    <>
-      <div>REACT_TS_VELOG</div>
-      <TEST width="15" height="15" />
-    </>
-  );
+  return <div> 👨‍💻 REACT_TS_VELOG </div>;
 };
 
 export default App;

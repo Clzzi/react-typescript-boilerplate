@@ -1,29 +1,45 @@
-const path = require("path");
-const webpack = require("webpack");
-const dotenv = require("dotenv-webpack");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
+const path = require('path');
+const webpack = require('webpack');
+const dotenv = require('dotenv-webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 module.exports = (env) => {
   return {
-    entry: "./src/index.tsx",
+    entry: './src/index.tsx',
     output: {
-      path: path.join(__dirname, "../dist"),
-      filename: "bundle.js",
+      path: path.join(__dirname, '../dist'),
+      filename: "[name].[hash].bundle.js",
+      chunkFilename: '[name].[chunkhash].js',
       clean: true,
     },
 
     resolve: {
-      extensions: [".ts", ".tsx", ".js"],
+      extensions: ['.ts', '.tsx', '.js'],
       alias: {
-        "@": path.resolve(__dirname, "../src/"),
+        '@': path.resolve(__dirname, '../src/'),
       },
     },
+
+    optimization: {
+      splitChunks: {
+        chunks: 'all',
+        cacheGroups: {
+          vendor: {
+            chunks: 'all',
+            name: 'vendor',
+            enforce: true,
+            test: /[\\/]node_modules[\\/]/,
+          },
+        },
+      },
+    },
+
     module: {
       rules: [
         {
           test: /\.(ts|tsx|js|jsx)$/,
-          loader: "ts-loader",
+          loader: 'ts-loader',
           exclude: /node_modules/,
           options: {
             transpileOnly: true,
@@ -32,13 +48,13 @@ module.exports = (env) => {
 
         {
           test: /\.css$/,
-          use: ["style-loader", "css-loader"],
+          use: ['style-loader', 'css-loader'],
         },
         {
           test: /\.(png|jpe?g|gif|woff|woff2|ttf|ico)$/i,
           use: [
             {
-              loader: "file-loader",
+              loader: 'file-loader',
             },
           ],
         },
@@ -46,7 +62,7 @@ module.exports = (env) => {
           test: /\.svg$/,
           use: [
             {
-              loader: "@svgr/webpack",
+              loader: '@svgr/webpack',
               options: {
                 svgoConfig: {
                   plugins: [
@@ -66,10 +82,10 @@ module.exports = (env) => {
     },
     plugins: [
       new HtmlWebpackPlugin({
-        template: "./src/index.html",
+        template: './src/index.html',
       }),
       new dotenv({
-        path: env.prodcution ? "./env/env" : "./env/dev.env",
+        path: env.prodcution ? './env/env' : './env/dev.env',
       }),
       new ForkTsCheckerWebpackPlugin(),
     ],
