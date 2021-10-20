@@ -1,69 +1,77 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const path = require("path");
+const webpack = require("webpack");
+const dotenv = require("dotenv-webpack");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 
-module.exports = {
-  entry: "./src/index.tsx",
-  output: {
-    path: path.join(__dirname, "../dist"),
-    filename: "[name].[chunkhash].js",
-    publicPath: "/",
-  },
-  resolve: {
-    extensions: [".ts", ".tsx", ".js"],
-    modules: ["node_modules"],
-    alias: {
-      "@": path.resolve(__dirname, "../src/"),
+module.exports = (env) => {
+  return {
+    entry: "./src/index.tsx",
+    output: {
+      path: path.join(__dirname, "../dist"),
+      filename: "bundle.js",
+      clean: true,
     },
-  },
-  module: {
-    rules: [
-      {
-        test: /\.(ts|tsx)$/,
-        loader: "ts-loader",
-        exclude: /node_modules/,
-        options: {
-          transpileOnly: true,
+
+    resolve: {
+      extensions: [".ts", ".tsx", ".js"],
+      alias: {
+        "@": path.resolve(__dirname, "../src/"),
+      },
+    },
+    module: {
+      rules: [
+        {
+          test: /\.(ts|tsx|js|jsx)$/,
+          loader: "ts-loader",
+          exclude: /node_modules/,
+          options: {
+            transpileOnly: true,
+          },
         },
-      },
-      {
-        test: /\.(jpe?g|png|gif)$/i,
-        use: [
-          {
-            loader: "url-loader",
-            options: {
-              limit: 8192,
-              name: "assets/images/[name].[hash:8].[ext]",
+
+        {
+          test: /\.css$/,
+          use: ["style-loader", "css-loader"],
+        },
+        {
+          test: /\.(png|jpe?g|gif|woff|woff2|ttf|ico)$/i,
+          use: [
+            {
+              loader: "file-loader",
             },
-          },
-        ],
-      },
-      {
-        test: /\.css$/,
-        use: ["style-loader", "css-loader"],
-      },
-      {
-        test: /\.(woff|woff2|eot|ttf|otf)$/i,
-        use: [
-          {
-            loader: "file-loader",
-            options: { name: "assets/fonts/[name].[hash:8].[ext]" },
-          },
-        ],
-      },
-      {
-        test: /\.svg$/,
-        use: ["@svgr/webpack"],
-      },
+          ],
+        },
+        {
+          test: /\.svg$/,
+          use: [
+            {
+              loader: "@svgr/webpack",
+              options: {
+                svgoConfig: {
+                  plugins: [
+                    {
+                      removeRasterImages: false,
+                      removeStyleElement: false,
+                      removeUnknownsAndDefaults: false,
+                      removeViewBox: false,
+                    },
+                  ],
+                },
+              },
+            },
+          ],
+        },
+      ],
+    },
+    plugins: [
+      new HtmlWebpackPlugin({
+        template: "./src/index.html",
+      }),
+      new dotenv({
+        path: env.prodcution ? "./env/env" : "./env/dev.env",
+      }),
+      new ForkTsCheckerWebpackPlugin(),
     ],
-  },
-  plugins: [
-    new CleanWebpackPlugin({
-      cleanStaleWebpackAssets: false,
-    }),
-    new HtmlWebpackPlugin({
-      template: "public/index.html",
-      // favicon: "../public/favicon.ico",
-    }),
-  ],
+  };
 };

@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "webpack serve --config ./config/webpack.config.dev.js",
-    "build": "webpack --config ./config/webpack.config.prod.js"
+    "dev": "webpack serve --config ./config/webpack.config.dev.js --mode development --env development",
+    "build": "webpack --config ./config/webpack.config.prod.js --mode production --env production"
   },
   "repository": {
     "type": "git",
@@ -28,6 +28,7 @@
     "@types/webpack": "^5.28.0",
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.4.0",
+    "dotenv-webpack": "^7.0.3",
     "file-loader": "^6.2.0",
     "fork-ts-checker-webpack-plugin": "^6.3.4",
     "html-webpack-plugin": "^5.4.0",

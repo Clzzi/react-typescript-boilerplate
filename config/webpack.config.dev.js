@@ -1,22 +1,20 @@
 const { merge } = require("webpack-merge");
 const common = require("./webpack.config.common.js");
 
-module.exports = merge(common, {
-  mode: "development",
-  devtool: "inline-source-map",
-  devServer: {
-    static: {
-      directory: "../dist",
+module.exports = (env) => {
+  console.log(env);
+  return merge(common(env), {
+    mode: "development",
+    devtool: "inline-source-map",
+    devServer: {
+      static: {
+        directory: "../dist",
+      },
+      host: "localhost",
+      port: 3000,
+      open: true,
+      open: true,
+      historyApiFallback: true,
     },
-    host: "localhost",
-    port: 8080,
-    open: true,
-    client: {
-      overlay: true,
-      progress: true,
-    },
-    compress: true,
-    open: true,
-    historyApiFallback: true,
-  },
-});
+  });
+};
