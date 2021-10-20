@@ -45,8 +45,7 @@ async function main() {
     execSync('npm install');
 
     console.log('** Remove unused Files...');
-    execSync('npx rimraf ../.git');
-    execSync('npx rimraf ../bin');
+    execSync('npx rimraf bin');
 
     console.log('** Complete! Happy Hacking! ');
   } catch (error) {
